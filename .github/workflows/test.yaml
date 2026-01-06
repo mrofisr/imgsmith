@@ -50,6 +50,7 @@ jobs:
 
       - name: Generate test summary
         if: always()
+        shell: bash
         run: |
           echo "## Test Results :test_tube:" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
@@ -71,6 +72,7 @@ jobs:
 
       - name: Generate coverage summary
         if: matrix.os == 'ubuntu-latest' && matrix.node == 20
+        shell: bash
         run: |
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "## Coverage Report :bar_chart:" >> $GITHUB_STEP_SUMMARY
