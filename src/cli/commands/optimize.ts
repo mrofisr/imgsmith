@@ -64,7 +64,9 @@ export const optimizeCommand = new Command()
         const convertOptions: ConvertOptions & { concurrency?: number } = {
           format: options.format as ConvertOptions["format"],
           quality: options.quality ? parseInt(options.quality, 10) : undefined,
-          concurrency: parseInt(options.concurrency, 10),
+          concurrency: options.concurrency
+            ? parseInt(options.concurrency, 10)
+            : 4,
         };
 
         const startTime = Date.now();
