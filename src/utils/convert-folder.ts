@@ -1,7 +1,7 @@
-import fs from "fs/promises";
-import path from "path";
+import fs from "node:fs/promises";
+import path from "node:path";
 
-type Converter = (input: string, output: string) => Promise<any>;
+type Converter = (input: string, output: string) => Promise<string>;
 
 export async function convertFolder(
   inputDir: string,

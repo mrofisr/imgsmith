@@ -1,4 +1,4 @@
-import { run } from "../utils/exec";
+import { run } from "../utils/exec.js";
 
 export async function toWebP(
   input: string,
