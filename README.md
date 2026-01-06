@@ -10,13 +10,14 @@
 
 ## Features
 
-- 🎯 **Intelligent Format Selection** - Automatically analyzes images and recommends the best format
-- 🚀 **Multiple Usage Modes** - CLI, Library, or Vite Plugin
-- 🔍 **Image Analysis** - Classifies images as photo, graphic, screenshot, or mixed content
-- ⚡ **Batch Processing** - Optimize entire directories with configurable concurrency
-- 📊 **Core Web Vitals** - Optimized for LCP and CLS performance metrics
-- 🌐 **Cross-Platform** - Works on Linux, macOS, and Windows
-- 💪 **TypeScript** - Fully typed with strict mode enabled
+- **Intelligent Format Selection** - Automatically analyzes images and recommends the best format
+- **Multiple Usage Modes** - CLI, Library, or Vite Plugin
+- **Image Analysis** - Classifies images as photo, graphic, screenshot, or mixed content
+- **Batch Processing** - Optimize entire directories with configurable concurrency
+- **Core Web Vitals** - Optimized for LCP and CLS performance metrics
+- **Cross-Platform** - Works on Linux, macOS, and Windows
+- **TypeScript** - Fully typed with strict mode enabled
+- **Zero Dependencies** - Uses only native Node.js built-ins
 
 ## Installation
 
@@ -81,7 +82,7 @@ Image Information:
   Animation: No
 
 Recommendation:
-  ✓ Format: AVIF
+  Format: AVIF
   Reason: AVIF provides 50% better compression than JPEG for photos
 ```
 
@@ -258,5 +259,5 @@ Built with:
 - [ImageMagick](https://imagemagick.org/) - Image manipulation
 - [WebP](https://developers.google.com/speed/webp) - WebP encoding
 - [libavif](https://github.com/AOMediaCodec/libavif) - AVIF encoding
-- [Commander.js](https://github.com/tj/commander.js) - CLI framework
 - [Vitest](https://vitest.dev/) - Testing framework
+- Native Node.js built-ins - Zero runtime dependencies
