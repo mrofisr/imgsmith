@@ -4,6 +4,7 @@ import { toWebP } from "../converters/webp.js";
 import { toAVIF } from "../converters/avif.js";
 import { toJPEG } from "../converters/jpeg.js";
 import { toPNG } from "../converters/png.js";
+import { recommendFormat } from "../recommendation/engine.js";
 
 const DEFAULT_QUALITY: Record<ImageFormat, number> = {
   webp: 80,
@@ -33,9 +34,8 @@ export async function convert(
   // Determine format
   let format: ImageFormat;
   if (options.format === "auto" || !options.format) {
-    // TODO: Use recommendation engine (Phase 3)
-    // For now, default to webp as it has best compatibility/size balance
-    format = "webp";
+    // Use recommendation engine to analyze image and suggest best format
+    format = await recommendFormat(input);
   } else {
     format = options.format as ImageFormat;
   }
