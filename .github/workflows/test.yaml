@@ -48,9 +48,31 @@ jobs:
       - name: Run tests
         run: npm test
 
+      - name: Generate test summary
+        if: always()
+        run: |
+          echo "## Test Results :test_tube:" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Platform:** ${{ runner.os }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Node Version:** ${{ matrix.node }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          if [ ${{ job.status }} == 'success' ]; then
+            echo ":white_check_mark: All tests passed!" >> $GITHUB_STEP_SUMMARY
+          else
+            echo ":x: Tests failed" >> $GITHUB_STEP_SUMMARY
+          fi
+
       - name: Upload coverage
         if: matrix.os == 'ubuntu-latest' && matrix.node == 20
         uses: codecov/codecov-action@v4
         with:
           file: ./coverage/lcov.info
           fail_ci_if_error: false
+
+      - name: Generate coverage summary
+        if: matrix.os == 'ubuntu-latest' && matrix.node == 20
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "## Coverage Report :bar_chart:" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Coverage report uploaded to Codecov" >> $GITHUB_STEP_SUMMARY
