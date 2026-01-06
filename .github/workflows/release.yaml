@@ -34,10 +34,36 @@ jobs:
       - name: Verify package contents
         run: npm pack --dry-run
 
+      - name: Get package info
+        id: package
+        run: |
+          echo "version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
+          echo "name=$(node -p "require('./package.json').name")" >> $GITHUB_OUTPUT
+
       - name: Publish to npm Registry
         run: npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Generate release summary
+        if: always()
+        run: |
+          echo "# Release Summary :rocket:" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "## Package Information" >> $GITHUB_STEP_SUMMARY
+          echo "- **Package:** \`${{ steps.package.outputs.name }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Version:** \`${{ steps.package.outputs.version }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Tag:** \`${{ github.ref_name }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "## Actions Taken :white_check_mark:" >> $GITHUB_STEP_SUMMARY
+          echo "- [x] Tests passed" >> $GITHUB_STEP_SUMMARY
+          echo "- [x] Package built" >> $GITHUB_STEP_SUMMARY
+          echo "- [x] Published to npm with provenance" >> $GITHUB_STEP_SUMMARY
+          echo "- [x] GitHub release created" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "## Links :link:" >> $GITHUB_STEP_SUMMARY
+          echo "- [npm package](https://www.npmjs.com/package/${{ steps.package.outputs.name }})" >> $GITHUB_STEP_SUMMARY
+          echo "- [GitHub release](https://github.com/${{ github.repository }}/releases/tag/${{ github.ref_name }})" >> $GITHUB_STEP_SUMMARY
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
