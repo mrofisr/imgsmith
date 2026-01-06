@@ -1,6 +1,6 @@
-import { run } from "../utils/exec";
-import { getPlatform, type Platform } from "./platform";
-import { getInstallGuide } from "./install-guides";
+import { run } from "../utils/exec.js";
+import { getPlatform, type Platform } from "./platform.js";
+import { getInstallGuide } from "./install-guides.js";
 
 export interface DependencyStatus {
   name: string;

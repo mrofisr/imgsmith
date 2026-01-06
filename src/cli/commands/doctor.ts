@@ -1,5 +1,5 @@
-import { checkAllDependencies } from "../../detection/dependencies";
-import { logger } from "../ui/logger";
+import { checkAllDependencies } from "../../detection/dependencies.js";
+import { logger } from "../ui/logger.js";
 
 export async function doctor(): Promise<void> {
   logger.header("Dependency Check");

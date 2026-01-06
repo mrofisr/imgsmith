@@ -1,4 +1,4 @@
-import type { Platform } from "./platform";
+import type { Platform } from "./platform.js";
 
 const INSTALL_GUIDES: Record<string, Record<Platform, string>> = {
   ImageMagick: {
