@@ -1,5 +1,4 @@
 import { stat } from "node:fs/promises";
-import path from "node:path";
 import type { ConvertOptions, ConvertResult, ImageFormat } from "./types.js";
 import { toWebP } from "../converters/webp.js";
 import { toAVIF } from "../converters/avif.js";
