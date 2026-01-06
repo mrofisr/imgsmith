@@ -3,7 +3,7 @@
 > Forge optimized images for the modern web
 
 [![Test](https://github.com/mrofisr/imgsmith/actions/workflows/test.yaml/badge.svg)](https://github.com/mrofisr/imgsmith/actions/workflows/test.yaml)
-[![npm version](https://badge.fury.io/js/imgsmith.svg)](https://www.npmjs.com/package/imgsmith)
+[![npm version](https://badge.fury.io/js/%40mrofisr%2Fimgsmith.svg)](https://www.npmjs.com/package/@mrofisr/imgsmith)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 **imgsmith** is a powerful image optimization tool that uses native CLIs (ImageMagick, WebP, AVIF) to convert and optimize images with intelligent format recommendations based on image analysis.
@@ -21,7 +21,7 @@
 ## Installation
 
 ```bash
-npm install imgsmith
+npm install @mrofisr/imgsmith
 ```
 
 ### System Dependencies
@@ -100,7 +100,7 @@ imgsmith optimize ./assets -r -f webp -q 80 -c 8
 ### Basic Conversion
 
 ```typescript
-import { convert } from 'imgsmith';
+import { convert } from '@mrofisr/imgsmith';
 
 // Auto-detect best format
 const result = await convert('photo.jpg');
@@ -117,7 +117,7 @@ const result2 = await convert('image.png', 'image.webp', {
 ### Batch Conversion
 
 ```typescript
-import { convertMany } from 'imgsmith';
+import { convertMany } from '@mrofisr/imgsmith';
 
 const files = ['photo1.jpg', 'photo2.jpg', 'logo.png'];
 const results = await convertMany(files, {
@@ -131,7 +131,7 @@ console.log(results); // Array of ConvertResult
 ### Image Analysis
 
 ```typescript
-import { analyzeImage } from 'imgsmith';
+import { analyzeImage } from '@mrofisr/imgsmith';
 
 const analysis = await analyzeImage('photo.jpg');
 console.log(analysis.imageType); // "photo"
@@ -142,7 +142,7 @@ console.log(analysis.recommendation.reason); // "AVIF provides 50%..."
 ### Access Optimization Rules
 
 ```typescript
-import { OPTIMIZATION_RULES, CWV_GUIDELINES } from 'imgsmith';
+import { OPTIMIZATION_RULES, CWV_GUIDELINES } from '@mrofisr/imgsmith';
 
 console.log(OPTIMIZATION_RULES.photo.primary); // "avif"
 console.log(CWV_GUIDELINES.lcp.maxSize); // 153600 (150KB)
@@ -222,7 +222,7 @@ import type {
   ConvertResult,
   AnalyzeResult,
   FormatRecommendation,
-} from 'imgsmith';
+} from '@mrofisr/imgsmith';
 ```
 
 ## Development

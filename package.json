@@ -1,5 +1,5 @@
 {
-  "name": "imgsmith",
+  "name": "@mrofisr/imgsmith",
   "version": "1.0.0",
   "description": "Forge images using native CLIs (ImageMagick, WebP, AVIF)",
   "author": "abdurrofi <rofim58@gmail.com>",
